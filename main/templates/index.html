@@ -1,40 +1,12 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>Your Blog</title>
-</head>
-<body>
-    <header>
-        <h1>Your Blog</h1>
-        <p>Welcome to your blog!</p>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Categories</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-
-    <section class="main-content">
-        <article>
-            <h2>Blog Post Title</h2>
-            <p class="meta">Posted on <time datetime="2023-12-05">December 5, 2023</time> by Author</p>
-            <p>This is the content of your blog post. Write your thoughts and ideas here.</p>
-        </article>
-
-        <!-- Add more articles as needed -->
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Your Blog. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% extends 'base.html' %}
+    {% block content %}
+        <section class="main-content">
+            {% for post in posts %}
+            <article>
+                <h2>{{ post.title }}</h2>
+                <p class="meta">Posted on <time datetime="{{ post.pub_date }}">{{ post.pub_date }}</time> by Author</p>
+                <p>{{ post.content }}</p>
+            </article>
+            {% endfor %}
+        </section>
+    {% endblock %}
