@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-BEBMwdiM3fvD8XzVb4ADtj3lEOpR9+I/nla2HI8O2nWlCxj5cJz4fEUi4G/XncD+ARwW8NQzmXdY9+J/SoNn3A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>Your Blog</title>
 </head>
@@ -20,6 +21,7 @@
             <li><a href="/categories/">Categories</a></li>
             <li><a href="/about/">About</a></li>
             <li><a href="/contact/">Contact</a></li>
+            <li><a href="/authorisation/"><span class="icon"><i class="fas fa-user"></i> Log in </a></li>
         </ul>
     </nav>
     {% block content %}

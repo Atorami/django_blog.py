@@ -9,7 +9,9 @@ urlpatterns = [
     path('', views.index),
     path('contact/', views.contact),
     path('categories/', views.categories),
-    path('about/', views.about)
+    path('about/', views.about),
+    path('authorisation/', views.authorisation),
+    path('registration/', views.registration)
 ]
 
 if settings.DEBUG:

@@ -17,3 +17,12 @@ def about(request):
 
 def categories(request):
     return render(request, 'categories.html')
+
+
+def authorisation(request):
+    return render(request, 'Auth/authorisation.html')
+
+
+def registration(request):
+    return render(request, 'Auth/registration.html')
+

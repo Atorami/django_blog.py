@@ -24,14 +24,19 @@ nav {
 nav ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 20px 0 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 nav ul li {
     display: inline;
     margin-right: 10px;
 }
-
+nav ul li:last-child {
+    margin-right: 0;
+    margin-left: auto;
+}
 nav a {
     text-decoration: none;
     color: #fff;
@@ -39,7 +44,7 @@ nav a {
 
 .main-content {
     margin: 20px;
-    flex: 1; /* This allows the content to expand and fill the available space */
+    flex: 1;
 }
 
 article {
