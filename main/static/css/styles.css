@@ -61,10 +61,7 @@ body.contact {
 }
 
 section.main-content form {
-    background-color: #fff; /* Form background color */
     padding: 20px;
-    border-radius: 8px; /* Rounded corners for the form */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
 }
 
 section.main-content form label {
@@ -100,5 +97,59 @@ section.main-content form button:hover {
 @media (max-width: 600px) {
     section.main-content form {
         width: 100%;
+    }
+}
+/* Additional styles for About and Categories pages */
+
+body.about, body.categories {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+section.main-content article {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section.main-content article h2 {
+    color: #333;
+}
+
+section.main-content article p.meta {
+    font-style: italic;
+    color: #555;
+}
+
+section.main-content article p {
+    color: #333;
+}
+
+section.main-content article ul {
+    list-style: none;
+    padding: 0;
+}
+
+section.main-content article ul li {
+    margin-bottom: 10px;
+}
+
+section.main-content article ul li a {
+    text-decoration: none;
+    color: #007BFF;
+    transition: color 0.3s ease-in-out;
+}
+
+section.main-content article ul li a:hover {
+    color: #0056b3;
+}
+
+/* Responsive styles for the list items */
+@media (max-width: 600px) {
+    section.main-content article ul li {
+        display: block;
     }
 }
