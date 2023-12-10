@@ -62,7 +62,7 @@ footer {
 
 /* Additional styles for contact page */
 body.contact {
-    background-color: #e6e6e6; /* Lighter background color */
+    background-color: #e6e6e6;
 }
 
 section.main-content form {
@@ -98,13 +98,11 @@ section.main-content form button:hover {
     background-color: #555;
 }
 
-/* Responsive styles for the form */
 @media (max-width: 600px) {
     section.main-content form {
         width: 100%;
     }
 }
-/* Additional styles for About and Categories pages */
 
 body.about, body.categories {
     display: flex;
@@ -152,9 +150,47 @@ section.main-content article ul li a:hover {
     color: #0056b3;
 }
 
-/* Responsive styles for the list items */
 @media (max-width: 600px) {
     section.main-content article ul li {
         display: block;
     }
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    width: 33%;
+    position: relative;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-container button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    box-sizing: border-box;
+}
+
+.search-container button i {
+    font-size: 16px;
+}
+
+.search-container button:hover {
+    background-color: #555;
 }
