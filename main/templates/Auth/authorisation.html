@@ -10,6 +10,7 @@
 <body class="login">
 
     <form>
+        {%  csrf_token %}
         <h2>Login</h2>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>

@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Post
-from .forms import SearchForm
+from .forms import SearchForm, LoginForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.postgres.search import SearchVector
+from django.contrib.auth import authenticate, login
 
 
 def index(request):
@@ -53,6 +55,25 @@ def post_search(request):
         form = SearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = Post.objects.annotate(search=SearchVector('title', 'body')).filter(search=query)
+            results = Post.objects.annotate(search=SearchVector('title', 'body')).filter(search=query   )
 
     return render(request, 'search.html', {'form': form, 'query': query, 'results': results})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request, username=cd['username'],password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponse("Authenticated successfully")
+                else:
+                    return HttpResponse("Disabled account")
+            else:
+                return HttpResponse("Invalid login")
+        else:
+            form = LoginForm()
+        return render(request, 'Auth/authorisation.html', {'form': form})
