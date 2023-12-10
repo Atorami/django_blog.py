@@ -4,9 +4,10 @@
             {% for post in posts %}
             <article>
                 <h2>{{ post.title }}</h2>
-                <p class="meta">Posted on <time datetime="{{ post.pub_date }}">{{ post.pub_date }}</time> by Author</p>
+                <p class="meta">Posted on <time datetime="{{ post.pub_date }}">{{ post.pub_date }}</time> by {{ post.author }}</p>
                 <p>{{ post.content }}</p>
             </article>
             {% endfor %}
+        {% include 'pagination.html' with page=posts %}
         </section>
     {% endblock %}

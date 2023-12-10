@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from main import views
 
 urlpatterns = [
@@ -11,7 +11,8 @@ urlpatterns = [
     path('categories/', views.categories),
     path('about/', views.about),
     path('authorisation/', views.authorisation),
-    path('registration/', views.registration)
+    path('registration/', views.registration),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:

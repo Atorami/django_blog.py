@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from .models import Post
+from django.core.paginator import Paginator
 
 
 def index(request):
-    posts = Post.objects.all()
+    posts_list = Post.objects.all()
+    paginator = Paginator(posts_list, 3)
+    page_number = request.GET.get('page', 1)
+    posts = paginator.page(page_number)
     return render(request, 'index.html', {'posts': posts})
 
 
@@ -25,4 +29,3 @@ def authorisation(request):
 
 def registration(request):
     return render(request, 'Auth/registration.html')
-
