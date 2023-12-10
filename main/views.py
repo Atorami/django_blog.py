@@ -6,9 +6,15 @@ from django.contrib.postgres.search import SearchVector
 
 
 def index(request):
-    posts_list = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        posts_list = Post.objects.filter(title__icontains=query)
+    else:
+        posts_list = Post.objects.all()
+
     paginator = Paginator(posts_list, 3)
     page_number = request.GET.get('page', 1)
+
     try:
         posts = paginator.page(page_number)
     except EmptyPage:
@@ -16,7 +22,7 @@ def index(request):
     except PageNotAnInteger:
         posts = paginator.page(1)
 
-    return render(request, 'index.html', {'posts': posts})
+    return render(request, 'index.html', {'posts': posts, 'query': query})
 
 
 def contact(request):
