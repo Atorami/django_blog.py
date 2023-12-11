@@ -4,7 +4,7 @@ from .models import Post
 from .forms import SearchForm, LoginForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.postgres.search import SearchVector
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 
 def index(request):
@@ -77,3 +77,8 @@ def user_login(request):
         else:
             form = LoginForm()
         return render(request, 'Auth/authorisation.html', {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('index')
