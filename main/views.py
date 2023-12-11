@@ -39,10 +39,6 @@ def categories(request):
     return render(request, 'categories.html')
 
 
-def authorisation(request):
-    return render(request, 'Auth/authorisation.html')
-
-
 def registration(request):
     return render(request, 'Auth/registration.html')
 
@@ -55,7 +51,7 @@ def post_search(request):
         form = SearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['query']
-            results = Post.objects.annotate(search=SearchVector('title', 'body')).filter(search=query   )
+            results = Post.objects.annotate(search=SearchVector('title', 'body')).filter(search=query)
 
     return render(request, 'search.html', {'form': form, 'query': query, 'results': results})
 
@@ -65,18 +61,22 @@ def user_login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            user = authenticate(request, username=cd['username'],password=cd['password'])
+            user = authenticate(request, username=cd['username'], password=cd['password'])
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return redirect('index', {'user': user})
+                    return redirect('index')
                 else:
                     return HttpResponse("Disabled account")
             else:
                 return HttpResponse("Invalid login")
         else:
             form = LoginForm()
-        return render(request, 'Auth/authorisation.html', {'form': form})
+
+        return render(request, 'Auth/login.html', {'form': form})
+    else:
+        form = LoginForm()
+        return render(request, 'Auth/login.html', {'form': form})
 
 
 def user_logout(request):
