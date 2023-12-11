@@ -1,10 +1,11 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from .models import Post
-from .forms import SearchForm, LoginForm
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.postgres.search import SearchVector
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.postgres.search import SearchVector
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
+
+from .forms import SearchForm, LoginForm, CommentForm
+from .models import Post, Comment
 
 
 def index(request):
@@ -85,7 +86,21 @@ def user_logout(request):
 
 
 def user_profile(request):
-    context = {
-
-    }
     return render(request, 'Profile/profile.html')
+
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    comments = post.comments.all()
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = CommentForm()
+    return render(request, 'Posts/post_detail.html', {'post': post, 'comments': comments, 'form': form})

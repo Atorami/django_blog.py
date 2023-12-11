@@ -1,4 +1,5 @@
 from django import forms
+from main.models import Comment
 
 
 class EmailPostForm(forms.Form):
@@ -15,3 +16,12 @@ class SearchForm(forms.Form):
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 4, 'cols': 50}),
+        }

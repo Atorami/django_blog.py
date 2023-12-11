@@ -1,0 +1,8 @@
+<form method="post" action="{% url 'add_comment' post.id %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="id_content">Your Comment:</label>
+    <textarea id="id_content" name="content" rows="4" cols="50" required></textarea>
+  </div>
+  <button type="submit">Add Comment</button>
+</form>

@@ -60,8 +60,6 @@ footer {
     text-align: center;
     padding: 1em;
 }
-
-/* Additional styles for contact page */
 body.contact {
     background-color: #e6e6e6;
 }
@@ -335,5 +333,53 @@ section.main-content.profile {
 
     .user-activity::before {
         display: none;
+    }
+}
+
+article {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comments {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.comments h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.comment {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.comment p.meta {
+    font-style: italic;
+    color: #555;
+}
+
+.comment p {
+    color: #333;
+}
+
+.post-detail .content {
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    article {
+        margin: 10px;
+    }
+
+    .comments {
+        padding: 10px;
     }
 }
