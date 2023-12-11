@@ -16,3 +16,5 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ['-pub_date']
