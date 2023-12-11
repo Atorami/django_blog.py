@@ -17,14 +17,14 @@
             <h3>Last Posts</h3>
             <ul>
                 {% for post in user.posts.all %}
-                    <li>{{ post.title }}</li>
+                   <li><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></li>
                 {% endfor %}
             </ul>
 
             <h3>Last Comments</h3>
             <ul>
                 {% for comment in user.comments.all|slice:":3" %}
-                    <li>{{ comment.text }}</li>
+                    <li>{{ comment.content}}</li>
                 {% endfor %}
             </ul>
         </div>
