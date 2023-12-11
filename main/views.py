@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post
 from .forms import SearchForm, LoginForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -69,7 +69,7 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return HttpResponse("Authenticated successfully")
+                    return redirect('index', {'user': user})
                 else:
                     return HttpResponse("Disabled account")
             else:
