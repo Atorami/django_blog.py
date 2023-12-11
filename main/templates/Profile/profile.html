@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="main-content profile">
+        <div class="profile-info">
+            <div class="avatar-container">
+                <img src="https://placekitten.com/120/120" alt="Avatar">
+            </div>
+            <div class="user-info">
+                <h2>{{ user.username }}</h2>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p class="user-rating">Rating: 4.5</p>
+            </div>
+        </div>
+
+        <div class="user-activity">
+            <h3>Last Posts</h3>
+            <ul>
+                {% for post in user.posts.all %}
+                    <li>{{ post.title }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Last Comments</h3>
+            <ul>
+                {% for comment in user.comments.all|slice:":3" %}
+                    <li>{{ comment.text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

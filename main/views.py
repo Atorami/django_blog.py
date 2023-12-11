@@ -82,3 +82,10 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('index')
+
+
+def user_profile(request):
+    context = {
+
+    }
+    return render(request, 'Profile/profile.html')
