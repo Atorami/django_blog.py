@@ -23,8 +23,8 @@
 
             <h3>Last Comments</h3>
             <ul>
-                {% for comment in user.comments.all|slice:":3" %}
-                    <li>{{ comment.content}}</li>
+                {% for comment in user.comments.all %}
+                    <li>{{ comment.content }}</li>
                 {% endfor %}
             </ul>
         </div>
