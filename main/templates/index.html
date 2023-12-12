@@ -7,7 +7,9 @@
                 <h2>{{ post.title }}</h2>
                 <p class="meta">Posted on <time datetime="{{ post.pub_date }}">{{ post.pub_date }}</time> by {{ post.author }}</p>
                 <p>{{ post.content }}</p>
-                <p><a href="{% url 'post_detail' pk=post.pk %}">Read Full</a></p>
+                <a href="{% url 'post_detail' pk=post.pk %}">
+                    <button id="read-more">Read more</button>
+                </a>
             </article>
             {% endfor %}
         {% include 'pagination.html' with page=posts %}

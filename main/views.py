@@ -104,3 +104,11 @@ def post_detail(request, pk):
     else:
         form = CommentForm()
     return render(request, 'Posts/post_detail.html', {'post': post, 'comments': comments, 'form': form})
+
+
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    if request.user == comment.author:
+        comment.delete()
+    return redirect('post_detail', pk=comment.post.id)
+

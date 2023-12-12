@@ -26,12 +26,20 @@
             <h3>Comments</h3>
             {% for comment in post.comments.all %}
                 <div class="comment">
-                    <p class="meta">Comment by {{ comment.author.username }} on {{ comment.pub_date|date:"F d, Y" }}</p>
+                 <p class="meta">Comment by {{ comment.author.username }} on {{ comment.pub_date|date:"F d, Y" }}</p>
                     <p>{{ comment.content }}</p>
+                <div class="comment-buttons">
+                    <form method="POST" action="{% url 'delete_comment' comment.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </form>
+
+
+                 </div>
                 </div>
             {% endfor %}
         </section>
-
-
     </section>
 {% endblock %}
