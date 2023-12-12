@@ -409,3 +409,41 @@ article {
 #read-more:hover {
     background-color: #555;
 }
+
+.snow{
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    animation: snowfall 10s linear;
+}
+
+@keyframes snowfall {
+    0%{
+        opacity: 0;
+        top: 0;
+        transform: translateX(-5px);
+    }
+    10%{
+        opacity: 1;
+        transform: translateX(-5px);
+    }
+    20%{
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+    30%{
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+    40%{
+        opacity: 0;
+        transform: translateX(-5px);
+    }
+    95%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        top: 100%;
+    }
+}
